@@ -1,4 +1,5 @@
-""" Real-Time Fluid Dynamics for Games by Jos Stam (2003).
+"""
+Real-Time Fluid Dynamics for Games by Jos Stam (2003).
 Parts of author's work are also protected
 under U. S. patent #6,266,071 B1 [Patent].
 """
@@ -6,11 +7,11 @@ under U. S. patent #6,266,071 B1 [Patent].
 
 def set_bnd(N, b, x):
     """
-    We assume that the fluid is contained in a box with solid walls: no flow
-    should exit the walls. This simply means that the horizontal component of
-    the velocity should be zero on the vertical walls, while the vertical
-    component of the velocity should be zero on the horizontal walls. For the
-    density and other fields considered in the code we simply assume
+    We assume that the fluid is contained in a box with solid walls.
+    No flow should exit the walls. This simply means that the horizontal
+    component of the velocity should be zero on the vertical walls, while the
+    vertical component of the velocity should be zero on the horizontal walls.
+    For the density and other fields considered in the code we simply assume
     continuity. The following code implements these conditions.
     """
 
@@ -39,6 +40,10 @@ def set_bnd(N, b, x):
 
 
 def lin_solve(N, b, x, x0, a, c):
+    """
+    lin_solve.
+    """
+
     for k in range(0, 20):
         x[1:N + 1, 1:N + 1] = (x0[1:N + 1, 1:N + 1] + a *
                                (x[0:N, 1:N + 1] +
@@ -48,15 +53,18 @@ def lin_solve(N, b, x, x0, a, c):
         set_bnd(N, b, x)
 
 
-# Addition of forces: the density increases due to sources
 def add_source(N, x, s, dt):
+    """
+    Addition of forces: the density increases due to sources.
+    """
+
     size = (N + 2)
     x[0:size, 0:size] += dt * s[0:size, 0:size]
 
 
-# Diffusion: the density diffuses at a certain rate
 def diffuse(N, b, x, x0, diff, dt):
     """
+    Diffusion: the density diffuses at a certain rate.
     The basic idea behind our method is to find the densities which when
     diffused backward in time yield the densities we started with. The simplest
     iterative solver which works well in practice is Gauss-Seidel relaxation.
@@ -65,9 +73,9 @@ def diffuse(N, b, x, x0, diff, dt):
     lin_solve(N, b, x, x0, a, 1 + 4 * a)
 
 
-# Advection: the density follows the velocity field
 def advect(N, b, d, d0, u, v, dt):
     """
+    Advection: the density follows the velocity field.
     The basic idea behind the advection step. Instead of moving the cell
     centers forward in time through the velocity field, we look for the
     particles which end up exactly at the cell centers by tracing backwards in
@@ -100,6 +108,10 @@ def advect(N, b, d, d0, u, v, dt):
 
 
 def project(N, u, v, p, div):
+    """
+    project.
+    """
+    
     h = 1.0 / N
     div[1:N + 1, 1:N + 1] = (-0.5 * h *
                              (u[2:N + 2, 1:N + 1] - u[0:N, 1:N + 1] +
@@ -114,8 +126,11 @@ def project(N, u, v, p, div):
     set_bnd(N, 2, v)
 
 
-# Evolving density: advection, diffusion, addition of sources
 def dens_step(N, x, x0, u, v, diff, dt):
+    """
+    Evolving density: advection, diffusion, addition of sources.
+    """
+
     add_source(N, x, x0, dt)
     x0, x = x, x0  # swap
     diffuse(N, 0, x, x0, diff, dt)
@@ -123,8 +138,11 @@ def dens_step(N, x, x0, u, v, diff, dt):
     advect(N, 0, x, x0, u, v, dt)
 
 
-# Evolving velocity: self-advection, viscous diffusion, addition of forces
 def vel_step(N, u, v, u0, v0, visc, dt):
+    """
+    Evolving velocity: self-advection, viscous diffusion, addition of forces.
+    """
+
     add_source(N, u, u0, dt)
     add_source(N, v, v0, dt)
     u0, u = u, u0  # swap
