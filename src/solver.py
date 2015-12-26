@@ -137,7 +137,7 @@ def dens_step(N, x, x0, u, v, diff, dt):
 
 def vel_step(N, u, v, u0, v0, visc, dt):
     """Evolving velocity.
-    
+
     It implies self-advection, viscous diffusion, addition of forces.
     """
 
