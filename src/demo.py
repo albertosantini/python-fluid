@@ -33,7 +33,7 @@ try:
     from OpenGL.GL import *
     from OpenGL.GLU import *
 except:
-    print('ERROR: PyOpenGL not installed properly.')
+    print 'ERROR: PyOpenGL not installed properly.'
     sys.exit()
 
 N = 32
@@ -239,7 +239,7 @@ def display_func():
 
 def open_glut_window():
     """open_glut_window."""
-    
+
     glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE)
     glutInitWindowPosition(0, 0)
     glutInitWindowSize(win_x, win_y)
