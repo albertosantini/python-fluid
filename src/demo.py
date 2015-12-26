@@ -37,7 +37,7 @@ except:
     sys.exit()
 
 N = 32
-size = N+2
+size = N + 2
 
 dt = 0.1
 diff = 0.0
@@ -103,14 +103,14 @@ def post_display():
 def draw_velocity():
     """draw_velocity."""
 
-    h = 1.0/N
+    h = 1.0 / N
 
     glColor3f(1.0, 1.0, 1.0)
     glLineWidth(1.0)
 
     glBegin(GL_LINES)
     for i in range(1, N + 1):
-        x = (i - 0.5)*h
+        x = (i - 0.5) * h
         for j in range(1, N + 1):
             y = (j - 0.5) * h
             glColor3f(1, 0, 0)
@@ -122,7 +122,7 @@ def draw_velocity():
 def draw_density():
     """draw_density."""
 
-    h = 1.0/N
+    h = 1.0 / N
 
     glBegin(GL_QUADS)
     for i in range(0, N + 1):
@@ -137,11 +137,11 @@ def draw_density():
             glColor3f(d00, d00, d00)
             glVertex2f(x, y)
             glColor3f(d10, d10, d10)
-            glVertex2f(x+h, y)
+            glVertex2f(x + h, y)
             glColor3f(d11, d11, d11)
-            glVertex2f(x+h, y+h)
+            glVertex2f(x + h, y + h)
             glColor3f(d01, d01, d01)
-            glVertex2f(x, y+h)
+            glVertex2f(x, y + h)
     glEnd()
 
 

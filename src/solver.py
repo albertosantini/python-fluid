@@ -79,7 +79,7 @@ def advect(N, b, d, d0, u, v, dt):
     time from the cell centers.
     """
 
-    dt0 = dt*N
+    dt0 = dt * N
     for i in range(1, N + 1):
         for j in range(1, N + 1):
             x = i - dt0 * u[i, j]
@@ -116,8 +116,8 @@ def project(N, u, v, p, div):
     set_bnd(N, 0, div)
     set_bnd(N, 0, p)
     lin_solve(N, 0, p, div, 1, 4)
-    u[1:N + 1, 1:N + 1] -= 0.5 * (p[2:N + 2, 1:N + 1]-p[0:N, 1:N + 1]) / h
-    v[1:N + 1, 1:N + 1] -= 0.5 * (p[1:N + 1, 2:N + 2]-p[1:N + 1, 0:N]) / h
+    u[1:N + 1, 1:N + 1] -= 0.5 * (p[2:N + 2, 1:N + 1] - p[0:N, 1:N + 1]) / h
+    v[1:N + 1, 1:N + 1] -= 0.5 * (p[1:N + 1, 2:N + 2] - p[1:N + 1, 0:N]) / h
     set_bnd(N, 1, u)
     set_bnd(N, 2, v)
 
