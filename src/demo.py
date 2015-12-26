@@ -1,4 +1,4 @@
-""" Real-Time Fluid Dynamics for Games by Jos Stam (2003).
+"""Real-Time Fluid Dynamics for Games by Jos Stam (2003).
 
 Parts of author's work are also protected
 under U. S. patent #6,266,071 B1 [Patent].
@@ -71,6 +71,8 @@ dens_prev = zeros((size, size), Float64)
 
 
 def clear_data():
+    """clear_data."""
+
     global u, v, u_prev, v_prev, dens, dens_prev, size
 
     u[0:size, 0:size] = 0.0
@@ -82,6 +84,8 @@ def clear_data():
 
 
 def pre_display():
+    """pre_display."""
+
     glViewport(0, 0, win_x, win_y)
     glMatrixMode(GL_PROJECTION)
     glLoadIdentity()
@@ -91,10 +95,14 @@ def pre_display():
 
 
 def post_display():
+    """post_display."""
+
     glutSwapBuffers()
 
 
 def draw_velocity():
+    """draw_velocity."""
+
     h = 1.0/N
 
     glColor3f(1.0, 1.0, 1.0)
@@ -112,6 +120,8 @@ def draw_velocity():
 
 
 def draw_density():
+    """draw_density."""
+
     h = 1.0/N
 
     glBegin(GL_QUADS)
@@ -136,6 +146,8 @@ def draw_density():
 
 
 def get_from_UI(d, u, v):
+    """get_from_UI."""
+
     global omx, omy
 
     d[0:size, 0:size] = 0.0
@@ -163,6 +175,8 @@ def get_from_UI(d, u, v):
 
 
 def key_func(key, x, y):
+    """key_func."""
+
     global dvel
 
     if key == 'c' or key == 'C':
@@ -172,6 +186,8 @@ def key_func(key, x, y):
 
 
 def mouse_func(button, state, x, y):
+    """mouse_func."""
+
     global omx, omy, mx, my, mouse_down
 
     omx = mx = x
@@ -180,6 +196,8 @@ def mouse_func(button, state, x, y):
 
 
 def motion_func(x, y):
+    """motion_func."""
+
     global mx, my
 
     mx = x
@@ -187,6 +205,8 @@ def motion_func(x, y):
 
 
 def reshape_func(width, height):
+    """reshape_func."""
+
     global win_x, win_y
 
     glutReshapeWindow(width, height)
@@ -195,6 +215,8 @@ def reshape_func(width, height):
 
 
 def idle_func():
+    """idle_func."""
+
     global dens, dens_prev, u, u_prev, v, v_prev, N, visc, dt, diff
 
     get_from_UI(dens_prev, u_prev, v_prev)
@@ -205,6 +227,8 @@ def idle_func():
 
 
 def display_func():
+    """display_func."""
+
     pre_display()
     if dvel:
         draw_velocity()
@@ -214,6 +238,8 @@ def display_func():
 
 
 def open_glut_window():
+    """open_glut_window."""
+    
     glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE)
     glutInitWindowPosition(0, 0)
     glutInitWindowSize(win_x, win_y)
