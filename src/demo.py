@@ -259,6 +259,7 @@ def open_glut_window():
     glutIdleFunc(idle_func)
     glutDisplayFunc(display_func)
 
+
 if __name__ == '__main__':
     glutInit(sys.argv)
     clear_data()
