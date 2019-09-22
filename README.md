@@ -1,6 +1,6 @@
 # Real-Time Fluid Dynamics for Games
 
-[![Build Status](https://travis-ci.org/albertosantini/python-fluid.png)](https://travis-ci.org/albertosantini/python-fluid)
+![](https://github.com/albertosantini/python-fluid/workflows/CI/badge.svg)
 
 ## References
 
