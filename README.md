@@ -9,3 +9,5 @@
 - [Original paper](http://www.dgp.toronto.edu/people/stam/reality/Research/pub.html) by Jos Stam, `Real-Time Fluid Dynamics for Games` (Proceedings of the Game Developer Conference, March 2003). Parts of author's Jos Stam work are also protected under U. S. patent #6,266,071 B1 [Patent].
 
 - More recently in JavaScript [Navier Stokes Fluid Simulation on HTML5 Canvas](http://esimov.com/2014/01/navier-stokes-fluid-simulation-on-html5-canvas).
+
+- Latest js resource (July 2022) about [Stable Fluids](https://mofu-dev.com/en/blog/stable-fluids/)
